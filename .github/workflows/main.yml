@@ -29,10 +29,11 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: python main.py
 
-      - name: Save bot state
+            - name: Save bot state
         run: |
           git config user.name "Auto Story Bot"
           git config user.email "bot@users.noreply.github.com"
+          touch state.json
           git add state.json
           git diff --cached --quiet || git commit -m "Update bot state"
           git push
